@@ -1,0 +1,197 @@
+<div class="min-vh-100 py-4 px-3 page-bg">
+  <div class="mx-auto" style="max-width: 520px">
+
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <button class="btn btn-outline-light btn-sm" (click)="goBack()">
+        &#8592; Back
+      </button>
+
+      <h1 class="h4 text-white fw-bold mb-0">
+        {{ title }}
+      </h1>
+    </div>
+
+    <div class="card shadow">
+      <div class="card-body p-4">
+
+        @if (errorMessage) {
+        <div class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="onSave()">
+
+          <!-- Employee Id -->
+          <div class="mb-3">
+            <label for="employeeId" class="form-label fw-semibold">
+              Employee Id <span class="text-danger">*</span>
+            </label>
+
+            <input id="employeeId" type="text" formControlName="employeeId" placeholder="Enter Employee Id"
+              class="form-control" [class.is-invalid]="
+                form.get('employeeId')!.invalid &&
+                form.get('employeeId')!.touched
+              " />
+
+            @if (
+            form.get('employeeId')!.invalid &&
+            form.get('employeeId')!.touched
+            ) {
+            <div class="invalid-feedback">
+              Employee Id is required.
+            </div>
+            }
+
+            @if (errors['employeeId']) {
+            <div class="text-danger small mt-1">
+              {{ errors['employeeId'] }}
+            </div>
+            }
+          </div>
+
+          <!-- Employee Name -->
+          <div class="mb-3">
+            <label for="employeeName" class="form-label fw-semibold">
+              Employee Name <span class="text-danger">*</span>
+            </label>
+
+            <input id="employeeName" type="text" formControlName="employeeName" placeholder="Enter Employee Name"
+              class="form-control" [class.is-invalid]="
+                form.get('employeeName')!.invalid &&
+                form.get('employeeName')!.touched
+              " />
+
+            @if (
+            form.get('employeeName')!.invalid &&
+            form.get('employeeName')!.touched
+            ) {
+            <div class="invalid-feedback">
+              Name is required.
+            </div>
+            }
+
+            @if (errors['employeeName']) {
+            <div class="text-danger small mt-1">
+              {{ errors['employeeName'] }}
+            </div>
+            }
+          </div>
+
+          <!-- Department -->
+          <div class="mb-3">
+            <label for="department" class="form-label fw-semibold">
+              Department <span class="text-danger">*</span>
+            </label>
+
+            <input id="department" type="text" formControlName="department" placeholder="Enter Department"
+              class="form-control" [class.is-invalid]="
+                form.get('department')!.invalid &&
+                form.get('department')!.touched
+              " />
+
+            @if (
+            form.get('department')!.invalid &&
+            form.get('department')!.touched
+            ) {
+            <div class="invalid-feedback">
+              Department is required.
+            </div>
+            }
+
+            @if (errors['department']) {
+            <div class="text-danger small mt-1">
+              {{ errors['department'] }}
+            </div>
+            }
+          </div>
+
+          <!-- Salary -->
+          <div class="mb-3">
+            <label for="salary" class="form-label fw-semibold">
+              Salary <span class="text-danger">*</span>
+            </label>
+
+            <input id="salary" type="text" formControlName="salary" placeholder="Enter Salary" class="form-control"
+              [class.is-invalid]="
+                form.get('salary')!.invalid &&
+                form.get('salary')!.touched
+              " />
+
+            @if (
+            form.get('salary')!.invalid &&
+            form.get('salary')!.touched
+            ) {
+            <div class="invalid-feedback">
+              Salary is required.
+            </div>
+            }
+
+            @if (errors['salary']) {
+            <div class="text-danger small mt-1">
+              {{ errors['salary'] }}
+            </div>
+            }
+          </div>
+
+          <!-- Status -->
+          <div class="row g-3 mb-3">
+            <div class="col">
+
+              <label for="status" class="form-label fw-semibold">
+                Status <span class="text-danger">*</span>
+              </label>
+
+              <select id="status" formControlName="status" class="form-select">
+                <option value="">
+                  — Select status —
+                </option>
+
+                @for (g of statusOptions; track g) {
+                <option [value]="g">
+                  {{ g }}
+                </option>
+                }
+              </select>
+
+              @if (errors['status']) {
+              <div class="text-danger small mt-1">
+                {{ errors['status'] }}
+              </div>
+              }
+
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="d-flex gap-2 mt-4">
+
+            <!-- Save -->
+            <button type="submit" class="btn btn-success" [disabled]="saving || deleting">
+              <i class="bi bi-floppy"></i>
+              {{ saving ? 'Saving…' : 'Save' }}
+            </button>
+
+            <!-- Delete -->
+            @if (isEditMode) {
+            <button type="button" class="btn btn-danger" (click)="onDelete()" [disabled]="saving || deleting">
+              <i class="bi bi-trash"></i>
+              {{ deleting ? 'Deleting…' : 'Delete' }}
+            </button>
+            }
+
+            <!-- Cancel -->
+            <button type="button" class="btn btn-secondary" (click)="goBack()" [disabled]="saving || deleting">
+              <i class="bi bi-x-circle"></i>
+              Cancel
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
