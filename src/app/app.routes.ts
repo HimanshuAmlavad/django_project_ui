@@ -24,6 +24,10 @@ import { TimeTableListComponent } from './timetable-list/timetable-list';
 import { TimeTableComponent } from './timetable/timetable';
 import { EmployeeComponent } from './employee/employee';
 import { EmployeeListComponent } from './employee-list/employee-list';
+import { DoctorListComponent } from './doctor-list/doctor-list';
+import { DoctorComponent } from './doctor/doctor';
+import { ServiceListComponent } from './service-list/service-list';
+import { ServiceComponent } from './service/service';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -61,5 +65,11 @@ export const routes: Routes = [
   { path: 'employees', component: EmployeeListComponent },
   { path: 'employee/new', component: EmployeeComponent },
   { path: 'employee/:id', component: EmployeeComponent },
+  { path: 'doctors', component: DoctorListComponent },
+  { path: 'doctor/new', component: DoctorComponent },
+  { path: 'doctor/:id', component: DoctorComponent },
+  { path: 'services', component: ServiceListComponent },
+  { path: 'service/new', component: ServiceComponent },
+  { path: 'service/:id', component: ServiceComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

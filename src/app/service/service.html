@@ -1,0 +1,158 @@
+<div class="min-vh-100 py-4 px-3 page-bg">
+  <div class="mx-auto" style="max-width: 520px">
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <button class="btn btn-outline-light btn-sm" (click)="goBack()">
+        &#8592; Back
+      </button>
+
+      <h1 class="h4 text-white fw-bold mb-0">{{ title }}</h1>
+    </div>
+
+    <div class="card shadow">
+      <div class="card-body p-4">
+        @if (errorMessage) {
+        <div class="alert alert-danger">{{ errorMessage }}</div>
+        }
+
+        <form [formGroup]="form" (ngSubmit)="onSave()">
+          <!-- serviceName -->
+          <div class="mb-3">
+            <label for="serviceName" class="form-label fw-semibold">
+              Service Name <span class="text-danger">*</span>
+            </label>
+
+            <input
+              id="serviceName"
+              type="text"
+              formControlName="serviceName"
+              placeholder="Enter Service Name"
+              class="form-control"
+              [class.is-invalid]="form.get('serviceName')!.invalid && form.get('serviceName')!.touched"
+            />
+
+            @if ( form.get('serviceName')!.invalid &&
+            form.get('serviceName')!.touched ) {
+            <div class="invalid-feedback">Doctor Name is required.</div>
+            } @if (errors['serviceName']) {
+            <div class="text-danger small mt-1">{{ errors['serviceName'] }}</div>
+            }
+          </div>
+
+          <!-- price -->
+          <div class="mb-3">
+            <label for="price" class="form-label fw-semibold">
+                Price <span class="text-danger">*</span>
+            </label>
+
+            <input
+              id="price"
+              type="text"
+              formControlName="price"
+              placeholder="Enter Price"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('price')!.invalid &&
+                form.get('price')!.touched
+              "
+            />
+
+            @if ( form.get('price')!.invalid &&
+            form.get('price')!.touched ) {
+            <div class="invalid-feedback">Price is required.</div>
+            } @if (errors['price']) {
+            <div class="text-danger small mt-1">
+              {{ errors['price'] }}
+            </div>
+            }
+          </div>
+
+          <!-- description -->
+          <div class="mb-3">
+            <label for="description" class="form-label fw-semibold">
+              Description <span class="text-danger">*</span>
+            </label>
+
+            <input
+              id="description"
+              type="text"
+              formControlName="description"
+              placeholder="Enter Description"
+              class="form-control"
+              [class.is-invalid]="
+                form.get('description')!.invalid &&
+                form.get('description')!.touched
+              "
+            />
+
+            @if ( form.get('description')!.invalid &&
+            form.get('description')!.touched ) {
+            <div class="invalid-feedback">Description is required.</div>
+            } @if (errors['description']) {
+            <div class="text-danger small mt-1">{{ errors['description'] }}</div>
+            }
+          </div>
+
+        
+
+          <!-- serviceCategory -->
+          <div class="row g-3 mb-3">
+            <div class="col">
+              <label for="serviceCategory" class="form-label fw-semibold">
+                Service Category <span class="text-danger">*</span>
+              </label>
+
+              <select id="serviceCategory" formControlName="serviceCategory" class="form-select">
+                <option value="">— Select Service —</option>
+
+                @for (g of serviceOptions; track g) {
+                <option [value]="g">{{ g }}</option>
+                }
+              </select>
+
+              @if (errors['serviceCategory']) {
+              <div class="text-danger small mt-1">{{ errors['serviceCategory'] }}</div>
+              }
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="d-flex gap-2 mt-4">
+            <!-- Save -->
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="saving || deleting"
+            >
+              <i class="bi bi-floppy"></i>
+              {{ saving ? 'Saving…' : 'Save' }}
+            </button>
+
+            <!-- Delete -->
+            @if (isEditMode) {
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDelete()"
+              [disabled]="saving || deleting"
+            >
+              <i class="bi bi-trash"></i>
+              {{ deleting ? 'Deleting…' : 'Delete' }}
+            </button>
+            }
+
+            <!-- Cancel -->
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="goBack()"
+              [disabled]="saving || deleting"
+            >
+              <i class="bi bi-x-circle"></i>
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
