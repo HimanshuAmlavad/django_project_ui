@@ -20,6 +20,7 @@ export interface ORSAPIConfig {
   UPLOAD_PHOTO_API: string;
   DOCTOR_API: string;
   SERVICE_API: string;
+  VENDOR_API: string;
 
 }
 
@@ -52,4 +53,5 @@ export const ORSAPI: ORSAPIConfig = {
   TIMETABLE_API: `${BASE}${CONTEXT}/TimeTable/`,
   DOCTOR_API: `${BASE}${CONTEXT}/Doctor/`,
   SERVICE_API: `${BASE}${CONTEXT}/Service/`,
+  VENDOR_API: `${BASE}${CONTEXT}/Vendor/`,
 };

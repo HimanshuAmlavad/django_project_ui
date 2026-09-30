@@ -15,93 +15,93 @@
         }
 
         <form [formGroup]="form" (ngSubmit)="onSave()">
-          <!-- serviceName -->
+          <!-- vendorName -->
           <div class="mb-3">
-            <label for="serviceName" class="form-label fw-semibold">
-              Service Name <span class="text-danger">*</span>
+            <label for="vendorName" class="form-label fw-semibold">
+              Vendor Name <span class="text-danger">*</span>
             </label>
 
             <input
-              id="serviceName"
+              id="vendorName"
               type="text"
-              formControlName="serviceName"
-              placeholder="Enter Service Name"
+              formControlName="vendorName"
+              placeholder="Enter Vendor Name"
               class="form-control"
-              [class.is-invalid]="form.get('serviceName')!.invalid && form.get('serviceName')!.touched"
+              [class.is-invalid]="form.get('vendorName')!.invalid && form.get('vendorName')!.touched"
             />
 
             @if ( form.get('serviceName')!.invalid &&
-            form.get('serviceName')!.touched ) {
-            <div class="invalid-feedback">Service Name is required.</div>
-            } @if (errors['serviceName']) {
-            <div class="text-danger small mt-1">{{ errors['serviceName'] }}</div>
+            form.get('vendorName')!.touched ) {
+            <div class="invalid-feedback">Vendor Name is required.</div>
+            } @if (errors['vendorName']) {
+            <div class="text-danger small mt-1">{{ errors['vendorName'] }}</div>
             }
           </div>
 
-          <!-- price -->
+          <!-- mobileNo -->
           <div class="mb-3">
-            <label for="price" class="form-label fw-semibold">
-                Price <span class="text-danger">*</span>
+            <label for="mobileNo" class="form-label fw-semibold">
+                Mobile No <span class="text-danger">*</span>
             </label>
 
             <input
-              id="price"
+              id="mobileNo"
               type="text"
-              formControlName="price"
-              placeholder="Enter Price"
+              formControlName="mobileNo"
+              placeholder="Enter Mobile No"
               class="form-control"
               [class.is-invalid]="
-                form.get('price')!.invalid &&
-                form.get('price')!.touched
+                form.get('mobileNo')!.invalid &&
+                form.get('mobileNo')!.touched
               "
             />
 
-            @if ( form.get('price')!.invalid &&
-            form.get('price')!.touched ) {
-            <div class="invalid-feedback">Price is required.</div>
-            } @if (errors['price']) {
+            @if ( form.get('mobileNo')!.invalid &&
+            form.get('mobileNo')!.touched ) {
+            <div class="invalid-feedback">Mobile No is required.</div>
+            } @if (errors['mobileNo']) {
             <div class="text-danger small mt-1">
-              {{ errors['price'] }}
+              {{ errors['mobileNo'] }}
             </div>
             }
           </div>
 
-          <!-- description -->
+          <!-- address -->
           <div class="mb-3">
-            <label for="description" class="form-label fw-semibold">
-              Description <span class="text-danger">*</span>
+            <label for="address" class="form-label fw-semibold">
+              Address <span class="text-danger">*</span>
             </label>
 
             <input
-              id="description"
+              id="address"
               type="text"
-              formControlName="description"
-              placeholder="Enter Description"
+              formControlName="address"
+              placeholder="Enter Address"
               class="form-control"
               [class.is-invalid]="
-                form.get('description')!.invalid &&
-                form.get('description')!.touched
+                form.get('address')!.invalid &&
+                form.get('address')!.touched
               "
             />
 
-            @if ( form.get('description')!.invalid &&
-            form.get('description')!.touched ) {
-            <div class="invalid-feedback">Description is required.</div>
-            } @if (errors['description']) {
-            <div class="text-danger small mt-1">{{ errors['description'] }}</div>
+            @if ( form.get('address')!.invalid &&
+            form.get('address')!.touched ) {
+            <div class="invalid-feedback">address is required.</div>
+            } @if (errors['address']) {
+            <div class="text-danger small mt-1">{{ errors['address'] }}</div>
             }
           </div>
 
         
 
-          <!-- serviceCategory -->
+          <!-- serviceType -->
           <div class="row g-3 mb-3">
             <div class="col">
-              <label for="serviceCategory" class="form-label fw-semibold">
-                Service Category <span class="text-danger">*</span>
+              <label for="serviceType" class="form-label fw-semibold">
+                Service Type <span class="text-danger">*</span>
               </label>
 
-              <select id="serviceCategory" formControlName="serviceCategory" class="form-select">
+              <select id="serviceType" formControlName="serviceType" class="form-select">
                 <option value="">— Select Service —</option>
 
                 @for (g of serviceOptions; track g) {
@@ -109,8 +109,8 @@
                 }
               </select>
 
-              @if (errors['serviceCategory']) {
-              <div class="text-danger small mt-1">{{ errors['serviceCategory'] }}</div>
+              @if (errors['serviceType']) {
+              <div class="text-danger small mt-1">{{ errors['serviceType'] }}</div>
               }
             </div>
           </div>

@@ -28,6 +28,8 @@ import { DoctorListComponent } from './doctor-list/doctor-list';
 import { DoctorComponent } from './doctor/doctor';
 import { ServiceListComponent } from './service-list/service-list';
 import { ServiceComponent } from './service/service';
+import { VendorListComponent } from './vendor-list/vendor-list';
+import { VendorComponent } from './vendor/vendor';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -71,5 +73,8 @@ export const routes: Routes = [
   { path: 'services', component: ServiceListComponent },
   { path: 'service/new', component: ServiceComponent },
   { path: 'service/:id', component: ServiceComponent },
+  { path: 'vendors', component: VendorListComponent },
+  { path: 'vendor/new', component: VendorComponent },
+  { path: 'vendor/:id', component: VendorComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
